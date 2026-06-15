@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>谁坐副驾驶</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app" aria-live="polite">
+      <section class="topbar" aria-label="游戏状态">
+        <div>
+          <p class="eyebrow">副驾修罗场</p>
+          <h1>谁坐副驾驶</h1>
+          <p class="subtitle">十道关系题，选错一次车里就开始沉默。</p>
+        </div>
+        <div class="score-strip" role="list" aria-label="当前进度">
+          <div role="listitem">
+            <span id="roundNow">1</span><small>/10</small>
+            <b>题目</b>
+          </div>
+          <div role="listitem">
+            <span id="scoreNow">0</span><small>分</small>
+            <b>得分</b>
+          </div>
+          <div role="listitem">
+            <span id="streakNow">0</span><small>连</small>
+            <b>连对</b>
+          </div>
+        </div>
+      </section>
+
+      <section class="playfield">
+        <section class="question-zone" aria-label="答题区">
+          <div class="scene-board">
+            <span class="mini-label">本题局势</span>
+            <h2 id="sceneName">加载中</h2>
+            <p id="sceneText"></p>
+            <div class="tension-row" aria-label="尴尬指数">
+              <span>尴尬值</span>
+              <div class="meter"><i id="tensionBar"></i></div>
+              <b id="tensionText">0</b>
+            </div>
+          </div>
+
+          <div class="driver-card">
+            <span class="mini-label">司机</span>
+            <h2 id="driverName">加载中</h2>
+            <span id="driverGender" class="pill">判断中</span>
+          </div>
+
+          <div id="passengerList" class="passenger-list" aria-label="候选乘客"></div>
+
+          <div id="verdict" class="verdict" hidden></div>
+
+          <div class="actions">
+            <button id="nextButton" class="primary" type="button" disabled>下一题</button>
+            <button id="restartButton" class="ghost" type="button">新一局</button>
+          </div>
+        </section>
+
+        <section class="road-scene" aria-label="车内座位示意">
+          <div class="road-lines" aria-hidden="true"></div>
+          <div class="car" aria-hidden="true">
+            <div class="windshield"></div>
+            <div class="seat seat-shotgun">
+              <span>副驾</span>
+              <strong id="shotgunSeat">待定</strong>
+            </div>
+            <div class="seat seat-driver">
+              <span>司机</span>
+              <strong id="driverSeat">我</strong>
+            </div>
+            <div class="wheel"></div>
+            <div class="hood"></div>
+          </div>
+        </section>
+
+        <aside class="law-panel" aria-label="判定逻辑">
+          <h2>判定逻辑</h2>
+          <ol>
+            <li><span>1</span>安全照顾压过关系面子</li>
+            <li><span>2</span>长辈在场，先保家庭秩序</li>
+            <li><span>3</span>现任主权大于暧昧和前任</li>
+            <li><span>4</span>冷战、拉黑、旧情复燃会降权</li>
+            <li><span>5</span>宠物可爱，但副驾留给人类危机</li>
+          </ol>
+          <p id="ruleHint">每题必须从乘客里选一个，系统按局势、关系和临场状态给出唯一正解。</p>
+        </aside>
+      </section>
+
+      <section id="resultPanel" class="result-panel" hidden>
+        <div>
+          <p class="eyebrow">本局成绩</p>
+          <h2 id="resultTitle">0 / 10</h2>
+          <p id="resultCopy"></p>
+        </div>
+        <button id="playAgainButton" class="primary" type="button">再来一局</button>
+        <div id="reviewList" class="review-list" aria-label="答题复盘"></div>
+      </section>
+    </main>
+
+    <script src="./game.js"></script>
+  </body>
+</html>
